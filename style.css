@@ -32,11 +32,12 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
+    justify-content: space-between;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 15px 20px;
+    gap: 20px;
 }
 
 .logo-img {
@@ -45,34 +46,57 @@ nav {
     display: block;
 }
 
-/* Desktop Navigation */
-nav ul {
+nav ul.nav-links {
     display: flex;
     list-style: none;
+    margin-right: auto;
+    margin-left: 30px;
+    padding: 0;
 }
 
-nav ul li {
-    margin-left: 20px;
+nav ul.nav-links li {
+    margin-right: 20px;
+    margin-left: 0;
 }
 
-nav ul li a {
+nav ul.nav-links li a {
     text-decoration: none;
     color: #554d5a;
     font-weight: 500;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
-nav ul li a:hover {
+nav ul.nav-links li a:hover {
     color: #8a6f9f;
 }
 
-/* --- NEU: Mobile Navigation (Checkbox & Hamburger Menü) --- */
+.nav-social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.nav-social a {
+    color: #554d5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-social a:hover {
+    color: #8a6f9f;
+    transform: translateY(-2px);
+}
+
 .nav-checkbox {
-    display: none; /* Checkbox wird unsichtbar gemacht */
+    display: none;
 }
 
 .nav-icon {
-    display: none; /* Standardmäßig auf Desktop ausgeblendet */
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 28px;
@@ -369,14 +393,70 @@ hr {
 footer {
     background-color: #4a3656;
     color: #ebdff2;
-    text-align: center;
-    padding: 25px;
+    padding: 30px 20px;
     font-size: 14px;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
 }
 
 footer a {
     color: #ffffff;
     text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+    opacity: 0.8;
+}
+
+.powered-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+    font-size: 12.5px;
+    color: #c9bcce;
+    letter-spacing: 0.5px;
+}
+
+.agency-logo {
+    height: 22px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.85;
+}
+
+.agency-logo:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    color: #ebdff2;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
 }
 
 .modal-overlay {
@@ -462,8 +542,7 @@ footer a {
     color: #777;
 }
 
-/* --- MOBILE RESPONSIVE STYLES --- */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     html {
         scroll-padding-top: 130px;
     }
@@ -471,37 +550,49 @@ footer a {
     nav {
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
     }
 
-    /* Das Hamburger-Icon wird auf dem Handy sichtbar */
+    .logo {
+        order: 1;
+    }
+
+    .nav-social {
+        order: 2;
+        margin: 0 auto;
+        gap: 18px;
+    }
+
     .nav-icon {
         display: flex;
+        order: 3;
     }
 
-    /* Das ursprüngliche Desktop-Menü (ul) umwandeln in das ausklappbare Mobile-Menü */
-    nav ul {
+    nav ul.nav-links {
+        display: none;
+        order: 4;
         flex-direction: column;
         width: 100%;
         max-height: 0;
         overflow: hidden;
-        align-items: center; /* Zentriert alle Reiter horizontal perfekt */
+        align-items: center;
         transition: max-height 0.4s ease-in-out;
         padding: 0;
         margin: 0;
     }
 
-    nav ul li {
+    nav ul.nav-links li {
         margin: 12px 0;
     }
 
-    nav ul li a {
+    nav ul.nav-links li a {
         font-size: 1.1rem;
         letter-spacing: 1px;
     }
 
-    /* DIE MAGIE: Wenn Checkbox angehakt ist, klappt das Menü auf */
-    .nav-checkbox:checked ~ ul {
-        max-height: 350px; /* Genug Platz für alle Reiter untereinander */
+    .nav-checkbox:checked ~ ul.nav-links {
+        display: flex;
+        max-height: 350px;
         border-top: 1px solid #e8e2eb;
         margin-top: 15px;
         padding-top: 15px;
@@ -561,6 +652,46 @@ footer a {
     }
 
     .image-gallery::-webkit-scrollbar-thumb {
+        background: #8a6f9f;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .powered-by {
+        flex-direction: row;
+        font-size: 12px;
+    }
+    
+    .agency-logo {
+        height: 18px;
+    }
+
+    .product-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px !important;
+        padding-bottom: 15px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .product-card {
+        flex: 0 0 82% !important;
+        scroll-snap-align: start !important;
+    }
+
+    .product-grid::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .product-grid::-webkit-scrollbar-track {
+        background: #ebdff2;
+        border-radius: 10px;
+    }
+
+    .product-grid::-webkit-scrollbar-thumb {
         background: #8a6f9f;
         border-radius: 10px;
     }
@@ -631,13 +762,9 @@ footer a {
     }
 }
 
-/* ==========================================
-   MAGAZIN-GRID (GARANTIERT OHNE WEISSE RÄNDER)
-   ========================================== */
-
 .inclusion-mosaic {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* 2 Spalten nebeneinander */
+    grid-template-columns: 1fr 1fr !important;
     gap: 15px !important;
     margin-top: 25px !important;
 }
@@ -645,25 +772,23 @@ footer a {
 .mosaic-card {
     position: relative !important;
     border-radius: 12px !important;
-    overflow: hidden !important; /* Schneidet überstehende Ränder sauber ab */
+    overflow: hidden !important; 
     background-color: #f2eff4 !important;
     width: 100% !important;
-    height: 220px !important;    /* Erzwingt eine feste Kartenhöhe */
+    height: 220px !important;    
     box-shadow: 0 4px 15px rgba(107, 82, 125, 0.12) !important;
 }
 
-/* Erzwingt, dass das Bild exakt so groß ist wie die Karte */
 .mosaic-card img {
     width: 100% !important;
     height: 100% !important;
     min-width: 100% !important;
     min-height: 100% !important;
-    object-fit: cover !important; /* Füllt die Karte komplett aus, ohne Weißraum */
+    object-fit: cover !important; 
     object-position: center !important;
     display: block !important;
 }
 
-/* Versetzter Magazin-Look fürs 2. Bild */
 .mosaic-card.card-2 {
     margin-top: 20px !important;
 }
@@ -679,4 +804,13 @@ footer a {
     font-size: 12px !important;
     font-weight: 700 !important;
     z-index: 2 !important;
+}
+
+.organic-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #8a6f9f, transparent);
+    border: none;
+    margin: 30px auto;
+    width: 60%;
+    opacity: 0.4;
 }
