@@ -1,0 +1,55 @@
+backend:
+  name: git-gateway
+  branch: main # name deines Haupt-Branches (z. B. main oder master)
+
+media_folder: "images" # Ordner, in den hochgeladene Bilder gespeichert werden
+public_folder: "images"
+
+collections:
+  # -------------------------------------------------------------
+  # 1. SEITEN-TEXTE (Chi Siamo, Inklusion, Philosophie)
+  # -------------------------------------------------------------
+  - name: "pages"
+    label: "Seiten-Inhalte"
+    files:
+      - file: "index.html"
+        label: "Startseite (Haupttexte)"
+        name: "index"
+        fields:
+          - label: "Hero Subtitle"
+            name: "hero_subtitle"
+            widget: "string"
+            default: "L’Essenza della Natura"
+
+          - label: "Chi Siamo - Einleitung"
+            name: "chi_siamo_intro"
+            widget: "text"
+
+          - label: "Agricoltura Sociale & Inclusione - Beschreibung"
+            name: "agricoltura_sociale_text"
+            widget: "text"
+
+          - label: "Perché Scegliere Tinifa? - Text"
+            name: "perche_tinifa_text"
+            widget: "text"
+
+  # -------------------------------------------------------------
+  # 2. PRODUKTE (Verwaltung des Sortiments)
+  # -------------------------------------------------------------
+  - name: "products"
+    label: "Produkte (Sortiment)"
+    folder: "content/products" # Speichert Produkte als einzelne Dateien
+    create: true # Erlaubt Christin, neue Produkte anzulegen!
+    fields:
+      - { label: "Produktname", name: "title", widget: "string" }
+      - { label: "Slogan / Untertitel (z. B. 'Gioia di Lavanda')", name: "slogan", widget: "string", required: false }
+      - { label: "Beschreibung", name: "description", widget: "text" }
+      - label: "Kategorie"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "🪻 Cuscini alla Lavanda", value: "cuscini" }
+          - { label: "🌿 Olii Essenziali Puri", value: "olii" }
+          - { label: "🌸 Linea Cosmetica & Cura", value: "cosmetica" }
+          - { label: "🏺 Creazioni in Ceramica", value: "ceramica" }
+      - { label: "Produktbild", name: "image", widget: "image" }

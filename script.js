@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menü automatisch schließen, wenn ein Link geklickt wird
+
+    // 1. MOBILE MENÜ SCHLIESSEN
     const navLinks = document.querySelectorAll('nav ul li a');
     const navToggle = document.getElementById('nav-toggle');
 
@@ -10,37 +11,61 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Alle Elemente auswählen, die eine Scroll-Animation bekommen sollen
+
+    // 2. SCROLL-ANIMATION FÜR REVEAL-ELEMENTE
     const targets = document.querySelectorAll('.reveal-element');
 
-    // 2. Den Beobachter (Observer) einrichten
-    const observerOptions = {
-        root: null,       // Nutzt den normalen Browser-Bildschirm als Sichtfenster
-        rootMargin: '0px', // Kein zusätzlicher Rand
-        threshold: 0.15   // Sobald 15% des Elements im Bild sind, schlägt der Wachmann Alarm
-    };
+    if (targets.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.05
+        };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            // Pruefen, ob das Element im sichtbaren Bereich ist
-            if (entry.isIntersecting) {
-                // Füge die Klasse hinzu, damit die CSS-Animation startet
-                entry.target.classList.add('active');
-                
-                // Optional: Den Beobachter für dieses Element stoppen, 
-                // damit es nur beim ersten Hinscrollen animiert wird
-                observer.unobserve(entry.target);
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Animiert nur beim ersten Hinscrollen
+                }
+            });
+        }, observerOptions);
+
+        targets.forEach(target => {
+            revealObserver.observe(target);
+        });
+    }
+
+    // 3. VIDEO-AUTOPLAY BEIM SCROLLEN
+    const video = document.getElementById('scroll-video');
+
+    if (video) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play().catch(error => {
+                        console.log("Autoplay blockiert:", error);
+                    });
+                } else {
+                    video.pause();
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        videoObserver.observe(video);
+    }
+
+    // 4. NETLIFY IDENTITY LOGIN-WEITERLEITUNG
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+            if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                });
             }
         });
-    }, observerOptions);
+    }
 
-    // 3. Dem Beobachter sagen, welche Elemente er überwachen soll
-    targets.forEach(target => {
-        observer.observe(target);
-    });
 });
-
-
-

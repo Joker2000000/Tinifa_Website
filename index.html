@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -29,7 +30,7 @@
 
         <!-- Navigationslinks (Mitte) -->
         <ul class="nav-links">
-            <li><a href="#chi-siamo">Chi Siamo</a></li>
+            <li><a href="#chi-siamo">Chi Sono</a></li>
             <li><a href="#agricoltura-sociale">Agricoltura Sociale</a></li>
             <li><a href="#produzione">Produzione</a></li>
             <li><a href="#bomboniere">Bomboniere</a></li>
@@ -77,7 +78,7 @@
         <div class="container">
             <div class="welcome-card reveal-element">
                 <div class="welcome-header">
-                    <h2>Chi Siamo</h2>
+                    <h2>Chi Sono</h2>
                     <p class="intro">Un legame autentico tra terra e persona.</p>
                 </div>
 
@@ -147,7 +148,7 @@
         </div>
 
         <div class="video-polaroid reveal-element">
-            <video autoplay loop muted playsinline class="field-video">
+            <video autoplay loop muted playsinline class="field-video" id="scroll-video">
                 <source src="videos/kids_run.mp4" type="video/mp4">
                 Ihr Browser unterstützt dieses Video nicht.
             </video>
@@ -161,6 +162,60 @@
                 <h2>La Mia Produzione Artigianale</h2>
                 <p>Il cuore di Tinifa è la coltivazione di essenze botaniche, con la lavanda (<em>Lavandula angustifolia</em>) protagonista indiscussa, accompagnata da calendula, melissa e menta.</p>
                 <p>Nel mio laboratorio interno la trasformazione avviene seguendo metodi tradizionali e artigianali per creare prodotti puri e dedicati al tuo benessere:</p>
+            </div>
+
+            <div class="harvest-timeline reveal-element">
+                <h3 style="text-align: center; margin-bottom: 35px;">Dal Campo al Laboratorio</h3>
+
+                <div class="timeline-container">
+                    <!-- Schritt 1: Ernte (Feld) -->
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <span class="timeline-step">1. In Campo</span>
+                            <h4>La Fioritura & Cura</h4>
+                            <p>Nelle colline di Vedriano la lavanda cresce seguendo il ritmo naturale delle stagioni, curata con dedizione e rispetto.</p>
+                            <div class="timeline-img-box">
+                                <img src="images/Ernte3.jpg" alt="Fioritura della Lavanda">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schritt 2: Ernte (Feld) -->
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <span class="timeline-step">2. In Campo</span>
+                            <h4>La Raccolta a Mano</h4>
+                            <p>Durante la piena fioritura raccogliamo i fiori manualmente a uno a uno, per preservare intatte tutte le proprietà aromatiche.</p>
+                            <div class="timeline-img-box">
+                                <img src="images/Ernte2.jpg" alt="Raccolta a mano nel campo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schritt 3: Labor -->
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <span class="timeline-step">3. Laboratorio</span>
+                            <h4>Estrazione & Distillazione</h4>
+                            <p>Nel nostro laboratorio interno trasformiamo i fiori freschi attraverso metodi tradizionali per ottenere oli essenziali puri.</p>
+                            <div class="timeline-img-box">
+                                <img src="images/Extraktion_Öl.jpg" alt="Estrazione in laboratorio">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schritt 4: Labor -->
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <span class="timeline-step">4. Laboratorio</span>
+                            <h4>Creazione Artigianale</h4>
+                            <p>Realizziamo a mano i nostri cuscini aromatici, le linee cosmetiche e le ceramiche botaniche uniche.</p>
+                            <div class="timeline-img-box">
+                                <img src="images/Verarbeitung.jpg" alt="Creazione cosmetici e cuscini">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <h3 class="category-title reveal-element">🪻 Cuscini alla Lavanda</h3>
@@ -296,15 +351,20 @@
             <h2>Bomboniere & Eventi Speciali</h2>
             <p>Rendi unici i tuoi momenti speciali con i nostri prodotti artigianali. Realizziamo bomboniere e segnaposto personalizzati per matrimoni, battesimi, comunioni ed eventi aziendali.</p>
 
-            <div class="image-gallery reveal-element">
-                <div class="gallery-item">
-                    <img src="images/aromatische_kissen.jpg" alt="Tinifa Picknick nel campo">
+            <div class="grid-gallery-2x2 reveal-element">
+                <div class="grid-gallery-item">
+                    <img src="images/aromatische_kissen.jpg" alt="Tinifa Impressio 1">
                 </div>
-                <div class="gallery-item">
-                    <img src="images/Extraktion_Öl.jpg" alt="Tinifa Lettura nel campo">
+                <div class="grid-gallery-item">
+                    <img src="images/Individuell.jpeg" alt="Tinifa Impressio 2">
+                </div>
+                <div class="grid-gallery-item">
+                    <img src="images/individuell2.jpeg" alt="Tinifa Impressio 3">
+                </div>
+                <div class="grid-gallery-item">
+                    <img src="images/Individuell3.jpeg" alt="Tinifa Impressio 4">
                 </div>
             </div>
-            <p class="slider-hint">👈 Scorri per vedere di più 👉</p>
 
             <div class="highlight-box reveal-element" style="text-align: center;">
                 <h3>🌸 Cerchi un dono unico per i tuoi ospiti?</h3>
@@ -378,6 +438,7 @@
         <a href="#" class="modal-backdrop-close"></a>
     </div>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
